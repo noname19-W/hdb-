@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday kub</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Mali & Itim -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        handwriting: ['Mali', 'cursive'],
+                        casual: ['Itim', 'cursive'],
+                        englishHand: ['Caveat', 'cursive']
+                    },
+                    colors: {
+                        craft: {
+                            bg: '#FBF7EE',
+                            paper: '#FFFDF9',
+                            card: '#F5EFE0',
+                            rose: '#E8A598',
+                            peach: '#F4CBB2',
+                            ink: '#3D342F',
+                            sub: '#786C65',
+                            accent: '#D97757'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Mali', cursive;
+            background-color: #FBF7EE;
+            background-image: radial-gradient(#E2D9C8 1px, transparent 0);
+            background-size: 24px 24px;
+            color: #3D342F;
+            min-height: 100vh;
+        }
+
+        /* Clean Photo Frame Shadow */
+        .photo-card {
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(61, 52, 47, 0.08);
+            border: 1px solid #EFE8DC;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .photo-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(61, 52, 47, 0.12);
+        }
+
+        .stitch-border {
+            border: 2px dashed #D5C8B5;
+        }
+
+        /* Candle Flame Flicker */
+        .flame {
+            animation: flicker 1.2s ease-in-out infinite alternate;
+            transform-origin: bottom center;
+        }
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-2deg); opacity: 0.95; }
+            50% { transform: scale(1.15) rotate(2deg); opacity: 1; }
+            100% { transform: scale(0.95) rotate(-1deg); opacity: 0.9; }
+        }
+
+        .post-stamp {
+            border: 2px dotted #C4B19A;
+            background-color: #FFFDF9;
+        }
+    </style>
+</head>
+<body class="py-10 px-4 flex flex-col items-center justify-between selection:bg-pink-100 selection:text-craft-ink">
+    <!-- Main Scrapbook Page Area -->
+    <main class="w-full max-w-3xl flex flex-col items-center gap-8">
+
+        <!-- Title Section -->
+        <div class="relative text-center w-full">
+            <div class="bg-craft-paper rounded-2xl p-6 stitch-border relative shadow-sm">
+                <span class="font-englishHand text-2xl text-craft-accent block mb-1">Happy Birthday Na Kub</span>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-craft-ink tracking-tight">
+                    สุขสันต์วันเกิดนะกราฟ
+                </h1>
+                <!-- Post Stamp Decoration -->
+                <div class="hidden sm:flex absolute right-4 top-6 post-stamp w-14 h-16 flex-col items-center justify-center rotate-6 text-xs text-craft-sub">
+                    <span>Have a Good</span>
+                    <span>DAY</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 Photos Grid Section (Neat 2x2 Layout) -->
+        <div class="w-full grid grid-cols-2 gap-4 sm:gap-6">
+            
+            <!-- Photo 1 -->
+            <div class="photo-card rounded-xl p-3 flex flex-col items-center">
+                <div class="w-full aspect-square overflow-hidden rounded-lg bg-stone-100">
+                    <img id="img-0" class="w-full h-full object-cover" src="11831.jpg" alt="Photo 1">
+                </div>
+                <input type="text" class="w-full text-center bg-transparent mt-2 font-handwriting text-xs sm:text-sm text-craft-ink outline-none border-b border-transparent focus:border-stone-300" value="คิดถึงวันเทคโนเนอะ" placeholder="พิมพ์ข้อความ...">
+            </div>
+
+            <!-- Photo 2 -->
+            <div class="photo-card rounded-xl p-3 flex flex-col items-center">
+                <div class="w-full aspect-square overflow-hidden rounded-lg bg-stone-100">
+                    <img id="img-1" class="w-full h-full object-cover" src="11832.jpg" alt="Photo 2">
+                </div>
+                <input type="text" class="w-full text-center bg-transparent mt-2 font-handwriting text-xs sm:text-sm text-craft-ink outline-none border-b border-transparent focus:border-stone-300" value="ถ้าตอนนั้นไม่ได้เองนำเสนอโค้ดเราคงบ้าแล้ว" placeholder="พิมพ์ข้อความ...">
+            </div>
+
+            <!-- Photo 3 -->
+            <div class="photo-card rounded-xl p-3 flex flex-col items-center">
+                <div class="w-full aspect-square overflow-hidden rounded-lg bg-stone-100">
+                    <img id="img-2" class="w-full h-full object-cover" src="11833.jpg" alt="Photo 3">
+                </div>
+                <input type="text" class="w-full text-center bg-transparent mt-2 font-handwriting text-xs sm:text-sm text-craft-ink outline-none border-b border-transparent focus:border-stone-300" value="ขอบคุณทั้งทุกข์และสุขนะเพื่อน" placeholder="พิมพ์ข้อความ...">
+            </div>
+
+            <!-- Photo 4 -->
+            <div class="photo-card rounded-xl p-3 flex flex-col items-center">
+                <div class="w-full aspect-square overflow-hidden rounded-lg bg-stone-100">
+                    <img id="img-3" class="w-full h-full object-cover" src="11834.jpg" alt="Photo 4">
+                </div>
+                <input type="text" class="w-full text-center bg-transparent mt-2 font-handwriting text-xs sm:text-sm text-craft-ink outline-none border-b border-transparent focus:border-stone-300" value="หวังว่าจะไม่ลืมกันหวังว่าจะได้เจอกันไปแข่งด้วยกันบ่อยๆ" placeholder="พิมพ์ข้อความ...">
+            </div>
+
+        </div>
+
+        <!-- Wish Note & Cake Candle Section -->
+        <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+            
+            <!-- Cozy Note Box (7 cols) -->
+            <div class="md:col-span-7 flex flex-col">
+                <div class="bg-craft-paper p-6 rounded-2xl shadow-sm border border-craft-card relative h-full flex flex-col justify-between">
+                    <div class="absolute -top-3 right-6 text-craft-accent text-xl">📌</div>
+
+                    <div>
+                        <h2 class="text-xl font-bold text-craft-ink mb-3 flex items-center gap-2">
+                            <span class="text-craft-rose">💬</span> ส่วนนี้เป็นคำอวยพรแล้วก็บอกความในใจนะๆ
+                        </h2>
+                        
+                        <textarea id="wish-text" rows="5" class="w-full bg-transparent resize-none outline-none font-handwriting text-craft-ink leading-relaxed text-sm sm:text-base border-none focus:ring-0 p-0" placeholder="พิมพ์คำอวยพรที่นี่...">สุขสันต์วันเกิดอีกรอบนะ 🎂🎉 
+
+ก็จริงๆไม่มีอะไรมากอยากให้เองมีความสุขมากๆประสบความสำเร็จนะเพื่อนทำเกรด4ให้ได้มันอยากแต่เราเชื่อว่าเองทำได้สู้ ตอนทำนี้เอาซะคิดถึงม.ต้นเลยคิดถึงตอนนั้นมากมีความสุขโครตเลยเนอะเองว่าไหมหวังว่าจะได้เจอกันบ่อยๆนะแล้วก็หวังว่าจะได้มีโอกาสไปแข่งกับเองบ่อยๆถ้ามีสอวน.ไว้หาเวลาว่างไปนัดหาที่ติวไหมอยากติดมากเลย5555 ไม่รู้จะพิมอะไรแล้วจริงมันยังมีอีกหละแต่นึกเอาออกมาพิมไม่ถูกก็สุดท้ายก็อยากให้เองมีความสุขสุขสันต์วันเกิดอีกครั้งไว้เรามาเล่นเกมหมาป่าหรือหมากรุกกันอีกนะ:) หวังว่าจะไม่ลืมกันนะหนึ่งในเพื่อนสนิทที่สุดของเรา</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Birthday Cake & Blowing Candles (5 cols) -->
+            <div class="md:col-span-5 flex flex-col">
+                <div class="bg-craft-paper p-5 rounded-2xl shadow-sm border border-craft-card text-center flex flex-col items-center h-full justify-center">
+                    <!-- Cake Container -->
+                    <div class="relative my-2 cursor-pointer select-none" onclick="blowCandle()">
+                        <div class="flex justify-center gap-3 -mb-2 relative z-10">
+                            <div class="flex flex-col items-center">
+                                <div id="flame-1" class="flame text-amber-500 text-sm">🔥</div>
+                                <div class="w-1.5 h-6 bg-pink-300 rounded-t-sm"></div>
+                            </div>
+                            <div class="flex flex-col items-center -mt-2">
+                                <div id="flame-2" class="flame text-amber-500 text-base">🔥</div>
+                                <div class="w-2 h-8 bg-yellow-300 rounded-t-sm"></div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div id="flame-3" class="flame text-amber-500 text-sm">🔥</div>
+                                <div class="w-1.5 h-6 bg-blue-300 rounded-t-sm"></div>
+                            </div>
+                        </div>
+
+                        <div class="w-32 h-14 bg-craft-rose rounded-t-2xl relative flex flex-col justify-between overflow-hidden border-2 border-craft-ink/10 shadow-inner">
+                            <div class="w-full h-4 bg-white rounded-b-lg opacity-90"></div>
+                            <div class="flex justify-around px-2 mb-2">
+                                <span class="text-xs">🍓</span>
+                                <span class="text-xs">🫐</span>
+                                <span class="text-xs">🍓</span>
+                            </div>
+                        </div>
+                        <div class="w-36 h-4 bg-craft-peach rounded-full mx-auto -mt-1 border border-craft-ink/10"></div>
+                    </div>
+
+                    <p id="candle-status" class="text-xs text-craft-accent font-semibold mt-2">
+                     เค้กจำลองนะเพราะไม่น่าทำได้เหมือนปีที่แล้วที่ซื้อให้5555
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Confetti Action Button -->
+        <div class="mt-2">
+            <button onclick="popConfetti()" class="bg-craft-accent hover:bg-opacity-90 text-white font-medium px-8 py-3 rounded-2xl shadow-md hover:shadow-lg transition-all transform active:scale-95 flex items-center gap-2">
+                <span>✨</span>
+                <span>จุดพลุกระดาษฉลองวันเกิด!</span>
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        function popConfetti() {
+            confetti({
+                particleCount: 75,
+                spread: 70,
+                origin: { y: 0.7 },
+                colors: ['#E8A598', '#F4CBB2', '#D97757', '#F5EFE0', '#BAC8B6']
+            });
+        }
+    </script>
+</body>
+</html>
